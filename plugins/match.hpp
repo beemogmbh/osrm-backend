@@ -144,7 +144,7 @@ template <class DataFacadeT> class MapMatchingPlugin : public BasePlugin
 
             if (candidates.size() == 0)
             {
-                break;
+                continue;
             }
 
             // sort by foward id, then by reverse id and then by distance
@@ -327,12 +327,11 @@ template <class DataFacadeT> class MapMatchingPlugin : public BasePlugin
 
         const auto candidates_lists = getCandidates(
             input_coords, input_bearings, route_parameters.gps_precision, sub_trace_lengths);
-        if (candidates_lists.size() != input_coords.size())
+        if (candidates_lists.size() < 2)
         {
-            BOOST_ASSERT(candidates_lists.size() < input_coords.size());
+            BOOST_ASSERT(candidates_lists.size() < 2);
             json_result.values["status_message"] =
-                std::string("Could not find a matching segment for coordinate ") +
-                std::to_string(candidates_lists.size());
+                std::string("Could not find a matching segment for at least two coordinates");
             return Status::NoSegment;
         }
 
