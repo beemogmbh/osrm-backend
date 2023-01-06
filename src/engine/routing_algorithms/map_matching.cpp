@@ -28,9 +28,9 @@ namespace
 {
 using HMM = map_matching::HiddenMarkovModel<CandidateLists>;
 
-constexpr static const unsigned MAX_BROKEN_STATES = 10;
-constexpr static const double MATCHING_BETA = 10;
-constexpr static const double MAX_DISTANCE_DELTA = 2000.;
+constexpr static const unsigned MAX_BROKEN_STATES = 20;
+constexpr static const double MATCHING_BETA = 5;
+constexpr static const double MAX_DISTANCE_DELTA = 20000.;
 
 unsigned getMedianSampleTime(const std::vector<unsigned> &timestamps)
 {
