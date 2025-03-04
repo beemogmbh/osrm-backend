@@ -19,9 +19,6 @@ add_nodejs_module(node_osrm node_osrm.cpp)
 set_target_properties(node_osrm PROPERTIES CXX_STANDARD 17)
 # TODO: we disable clang-tidy for this target, because it causes errors in third-party NodeJs related headers
 set_target_properties(node_osrm PROPERTIES CXX_CLANG_TIDY "")
-# TODO: we turn off some warnings for this target, because it causes errors in third-party NodeJs related headers
-target_no_warning(node_osrm suggest-destructor-override)
-target_no_warning(node_osrm suggest-override)
 
 # https://github.com/cjntaylor/node-cmake/issues/53#issuecomment-842357457
 execute_process(COMMAND node -p "require('node-addon-api').include" WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} OUTPUT_VARIABLE NODE_ADDON_API_DIR)
