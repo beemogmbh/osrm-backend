@@ -245,7 +245,6 @@ if (ENABLE_SANITIZER)
 endif()
 
 # Configuring compilers
-include(cmake/warnings.cmake)
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fPIC -fcolor-diagnostics -ftemplate-depth=1024")
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
@@ -295,9 +294,6 @@ include_directories(SYSTEM ${MICROTAR_INCLUDE_DIR})
 
 add_library(MICROTAR OBJECT "${CMAKE_CURRENT_SOURCE_DIR}/third_party/microtar/src/microtar.c")
 set_property(TARGET MICROTAR PROPERTY POSITION_INDEPENDENT_CODE ON)
-
-target_no_warning(MICROTAR unused-variable)
-target_no_warning(MICROTAR format)
 
 set(PROTOZERO_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/protozero/include")
 include_directories(SYSTEM ${PROTOZERO_INCLUDE_DIR})
