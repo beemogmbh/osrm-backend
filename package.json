@@ -1,10 +1,9 @@
 {
-  "name": "@project-osrm/osrm",
-  "version": "5.28.0-unreleased",
+  "name": "osrm",
+  "version": "5.27.master-naviki",
   "private": false,
   "description": "The Open Source Routing Machine is a high performance routing engine written in C++ designed to run on OpenStreetMap data.",
   "dependencies": {
-    "@mapbox/node-pre-gyp": "^1.0.11",
     "seedrandom": "^3.0.5"
   },
   "browserify": {
@@ -18,7 +17,7 @@
     "test": "npm run lint && ./scripts/cucumber_test_matrix.sh",
     "clean": "rm -rf test/cache",
     "docs": "./scripts/build_api_docs.sh",
-    "install": "node-pre-gyp install --fallback-to-build=false || ./scripts/node_install.sh",
+    "install": "./scripts/node_install.sh",
     "nodejs-tests": "make -C test/data && ./lib/binding/osrm-datastore test/data/ch/monaco.osrm && node test/nodejs/index.js | faucet"
   },
   "repository": {
@@ -78,8 +77,5 @@
     "host": "https://github.com",
     "remote_path": "./Project-OSRM/osrm-backend/releases/download/v{version}/",
     "package_name": "{module_name}-v{version}-{napi_build_version}-{platform}-{arch}-{configuration}.tar.gz"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
